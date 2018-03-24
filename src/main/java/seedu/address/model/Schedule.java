@@ -14,15 +14,8 @@ public class Schedule {
     /**
      * Returns a list of all existing tasks.
      */
-    public static ArrayList<Task> getTaskList() {
+    public ArrayList<Task> getTaskList() {
         return taskList;
-    }
-
-    /**
-     * Returns true if task clashes with another task in schedule.
-     */
-    public static boolean isTaskCLash(Task task) {
-        return isTaskClash(task.getTaskDateTime(), task.getDuration());
     }
 
     /**
