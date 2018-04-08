@@ -224,6 +224,27 @@ A tutee can have any number of tags (including 0)
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Education level can only be either primary, secondary or junior college<br></p>
+</li>
+<li>
+<p>All details except tag MUST be added</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -266,9 +287,7 @@ Format: <code>lt</code></p>
 <div class="paragraph">
 <p>Shows a list of all tutees in the address book.<br>
 Using Command Word:<br>
-Format: <code>list</code><br>
-Using Command Alias:<br>
-Format: <code>l</code></p>
+Format: <code>list</code><br></p>
 </div>
 </div>
 <div class="sect2">
@@ -383,15 +402,15 @@ e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</c
 <div class="ulist">
 <ul>
 <li>
-<p><code>find Name John</code><br>
+<p><code>findpersonby Name John</code><br>
 Lists <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
-<p><code>f name Betsy Tim John</code><br>
+<p><code>findpersonby name Betsy Tim John</code><br>
 Lists any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
 </li>
 <li>
-<p><code>find grade B B+</code><br>
+<p><code>f grade B B+</code><br>
 Lists all tutee with grade <code>B</code> and <code>B+</code></p>
 </li>
 </ul>
@@ -895,11 +914,11 @@ Any amount can be provided. If <strong>0</strong> keyword is given, the displaye
 <div class="ulist">
 <ul>
 <li>
-<p><code>find month between january Mar</code><br>
+<p><code>findtaskby month between january Mar</code><br>
 Lists all tasks scheduled between January and March.</p>
 </li>
 <li>
-<p><code>find month between November February</code><br>
+<p><code>findtaskby month between November February</code><br>
 Lists all tasks scheduled on November, December, January and February.</p>
 </li>
 <li>
@@ -965,7 +984,7 @@ Format: <code>change TIME_UNIT</code></p>
 <p>Default view page time unit is d.</p>
 </li>
 <li>
-<p>Command fails if current view page time unit is same as the user input time unit.</p>
+<p>Command fails if current view page time unit is same as the user input time unit or user input an unrecognised time unit.</p>
 </li>
 </ul>
 </div>
@@ -981,16 +1000,60 @@ Format: <code>change TIME_UNIT</code></p>
 <li>
 <p><code>change d</code> (command fails as current calendar view is already in day)</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/change-d.png" alt="change d" width="800">
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>change w</code> (changes calendar view to week)</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/change-w.png" alt="change w" width="800">
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>change m</code> (changes calendar view to month)</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/change-m.png" alt="change m" width="800">
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>change y</code> (changes calendar view to year)</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/change-y.png" alt="change y" width="800">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Year view is unable to display all the months due to third party software constraint.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1226,7 +1289,7 @@ e.g.<code>s 2</code><br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-07 12:17:28 UTC
+Last updated 2018-04-08 11:42:07 UTC
 </div>
 </div>
 </body>
