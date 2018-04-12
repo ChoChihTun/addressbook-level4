@@ -46,9 +46,10 @@
 <ul class="sectlevel2">
 <li><a href="#add-tutee-command">3.1. Add tutee Command</a></li>
 <li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.4. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#sort-person-command">3.3. Sort Person Command</a></li>
+<li><a href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -998,20 +999,51 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
+<h3 id="sort-person-command"><a class="link" href="#sort-person-command">3.3. Sort Person Command</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">Reason for Implementation</a></h5>
+<div class="paragraph">
+<p>As the amount of contacts stored grows, it would be harder to browse the address book. Hence, Sort Person Command is created
+to ease users&#8217;s experience in organizing their address book.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="how-it-is-implemented-2"><a class="link" href="#how-it-is-implemented-2">How it is implemented</a></h5>
+<div class="paragraph">
+<p>The following sequence diagram shows the general idea of how sort person command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SortPersonSequenceDiagram.png" alt="SortPersonSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As shown in the sequence diagram, the Logic command&#8217;s call for execution leads to Sort Person command to request for a Comparator object from PersonSortUtil class.
+A comparator object is required since the sorting implementation utilizes JavaFX8&#8217;s SortedList class.
+(Refer to <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/SortedList.html*" class="bare">https://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/SortedList.html*</a> for more information)
+Here, PersonSortUtil class is responsible in providing a suitable comparator that matches the sorting behaviour requested by the user. Upon receiving the comparator, SortPersonCommand
+calls the sortFilteredPersonList() method in method which utilises a SortedList object to perform the sorting.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1042,7 +1074,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2054,32 +2086,6 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect2">
 <h3 id="feature-contribution"><a class="link" href="#feature-contribution">B.1. Feature Contribution</a></h3>
 <div class="paragraph">
-<p><strong>Raymond</strong>:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Support for Tasks (Major)</strong>:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><strong>Delete task command</strong>: Allows tutors to delete tasks.</p>
-</li>
-<li>
-<p><strong>Edit task command</strong>: Tutors are allowed to edit their tasks, if necessary.</p>
-</li>
-<li>
-<p><strong>View task command</strong>: Tutors are able to view their own task.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>With this added support for tasks, tutors will be able to customise their schedules more easily by some of these commands.</p>
-</div>
-<div class="paragraph">
 <p><strong>Chih Tun</strong>:</p>
 </div>
 <div class="ulist">
@@ -2108,102 +2114,81 @@ In addition, the calendar reflects any changes to the schedule such as adding of
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Buyung</strong>:</p>
+<p><strong>Eka Buyung Lienadi</strong>:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Scheduling features [Major Enhancement]</strong><br></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>ViewFiltered &amp; View Sort</strong> [Major Enhancement]
-This command lets tutors to view a filtered list of their stored tasks. As there are 2 kinds of tasks implemented in Tuition Connect,
-personal and tuition task, each kind of task has its own filter category.
-Within the current version, Tutors are able to utilize one of these filtering.
-First, tutors can filter their tasks by month, hence, allowing tutors to view all of their task within the specified month.
-Second, tutors can filter their tutee by the tutee&#8217;s school, grade or subject.</p>
+<p>Implemented task addition, deletion, filtering and sorting features.</p>
+</li>
+<li>
+<p>Implemented features to recognize natural language, which aids in task filtering.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>For the purpose of illustrating the implementation, this sequence diagram depicts the procedure when
-user desires to view a list of their tutee after being filtered by grade.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/viewFiltered-sequence-diagram.jpeg" alt="viewFiltered sequence diagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>This view filter command is created with the purpose of simplifying tutor&#8217;s life in navigating through their packed schedule.
-By having this command, tutors are able to locate their desired tasks easily.</p>
-</div>
-<div class="paragraph">
-<p>Within future version, this command would have a sorting capability. The filtered tutee
-shall be displayed after their name is sorted lexicographically.</p>
-</div>
-<div class="paragraph">
-<p><strong>Anas</strong>:</p>
-</div>
+</li>
+<li>
+<p>[Minor Enhancement]</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>CompleteCommand</strong> [Major Enhancement]</p>
+<p>Implemented tutee listing feature.</p>
+</li>
+<li>
+<p>Implemented tutee filtering and sorting features.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>An important feature for the tutor is the ability to manage financial records that pertain to his/her work.
-To that end, the CompleteCommand functionality is implemented. This feature allows the user to update the amount
-of work completed and the financial compensation he/she is entitled based on the units of work completed.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The CompleteCommand is an extension of the Undoable Command, which is part of the logic component.
-Much like many other commands in this application, the CompleteCommand was chosen to extend the undoable command, instead of the command, class in order
-to provide users with the flexibility to undo any unwanted commands. In summary, the CompleteCommand will extend the undoable command class which, itself,
-extends the command class.</p>
+<p><strong>Anas</strong>:
+. <strong>Integrating the Task class into the Addressbook</strong> [Major Enhancement]</p>
+</div>
+<div class="paragraph">
+<p>The Task class forms the foundation of TuitionConnect as it allows the user to manage their various
+"tasks". The task class comes in two forms, a personal task and a tuition task. The following is the
+interface:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">UndoableCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... undo logic ...</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">interface</span> <span class="class">Task</span> {
+    <span class="comment">// Consider changing the location of the three string values below</span>
 
-        executeUndoableCommand();
-    }
-}
+    <span class="predefined-type">String</span> MESSAGE_DESCRIPTION_CONSTRAINTS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Tasks Should have a non-empty description</span><span class="delimiter">&quot;</span></span>;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">CompleteCommand</span> <span class="directive">extends</span> UndoableCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult executeUndoableCommand() {
-        <span class="comment">// ... add Complete logic ...</span>
-    }
+    <span class="predefined-type">String</span> MESSAGE_DURATION_CONSTRAINTS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Duration must be a non-null value</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="predefined-type">String</span> MESSAGE_DATETIME_CONSTRAINTS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Date and time must be a non-null value</span><span class="delimiter">&quot;</span></span>;
+
+    LocalDateTime getTaskDateTime();
+
+    <span class="predefined-type">String</span> getStringTaskDateTime();
+
+    <span class="predefined-type">String</span> getDescription();
+
+    <span class="predefined-type">String</span> getDuration();
+
+    Entry getEntry();
 }</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Note: The above snippet will be updated when the complete code for this command is completed.</p>
-</div>
-<div class="paragraph">
-<p>The following diagram demonstrates the functioning of the CompleteCommand operation:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LogicCompleteCommandClassDiagram.jpg" alt="LogicCompleteCommandClassDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Essentially, the complete command will work by receiving an object of type task as its parameter and "marking" this task as completed.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>ViewTutee</strong> [Minor(?) Enhancement]</p>
+<p><strong>listTask Command</strong> [Minor Enhancement]</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>This feature allows the tutor to look at his/her current list of students. The idea behind this feature is for it to allow the tutor to
-see all the potential subscribers to his/her lessons and, by doing so, allowing them to associate these tutees with user-generated tasks.
-This feature is inspired by the "resources" concept in Microsoft Project whereby a "resource" is assigned to a work task.</p>
+<p>This feature allows the user to see all tasks stored in the addressbook. It is useful when a user has entered a command
+that displays only a single task. If the user then wants to see other tasks, he/she can input listTask
+and display the tasks again.</p>
 </div>
 </div>
 </div>
@@ -3031,7 +3016,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 17:16:10 UTC
+Last updated 2018-04-12 14:22:42 UTC
 </div>
 </div>
 </body>
