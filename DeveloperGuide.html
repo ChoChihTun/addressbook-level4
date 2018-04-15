@@ -39,7 +39,6 @@
 <li><a href="#Design-Logic">2.3. Logic component</a></li>
 <li><a href="#Design-Model">2.4. Model component</a></li>
 <li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
 </ul>
 </li>
 <li><a href="#implementation">3. Implementation</a>
@@ -47,9 +46,10 @@
 <li><a href="#add-tutee-command">3.1. Add tutee Command</a></li>
 <li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
 <li><a href="#sort-person-command">3.3. Sort Person Command</a></li>
-<li><a href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
+<li><a href="#natural-language-identifier">3.4. Natural Language Identifier</a></li>
+<li><a href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -412,7 +412,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the Address Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the <a href="#address-book">Address Book</a> data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
 </td>
 </tr>
 </table>
@@ -451,7 +451,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-T11-B1/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="{https://github.com/CS2103JAN2018-T11-B1/main}/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
@@ -492,7 +492,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/CS2103JAN2018-T11-B1/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="{https://github.com/CS2103JAN2018-T11-B1/main}/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -524,12 +524,12 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
+<img src="images/ModelClassDiagram2.png" alt="ModelClassDiagram2" width="800">
 </div>
 <div class="title">Figure 9. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-T11-B1/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="{https://github.com/CS2103JAN2018-T11-B1/main}/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -543,7 +543,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>stores the Address Book data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> and <code>ObservableList&lt;Task&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -555,12 +555,12 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+<img src="images/StorageClassDiagram2.png" alt="StorageClassDiagram2" width="800">
 </div>
 <div class="title">Figure 10. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-T11-B1/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="{https://github.com/CS2103JAN2018-T11-B1/main}/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -571,13 +571,11 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book data in xml format and read it back.</p>
+<p>can save the Address Book data in xml format and read it back.
+=== Common classes</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
@@ -597,9 +595,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="sect4">
 <h5 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for Implementation</a></h5>
 <div class="paragraph">
-<p>As the user of this application is the tutor, he or she will need to add the tutees' contact details.
-Since a tutee contains more details specific to them compared to a non-tutee, tutee contacts should not be mixed with the non-tutee contacts so that all the contacts are organized and can be managed easily.
-Therefore, AddTuteeCommand is used to add only the tutees' contact details.</p>
+<p>As the user of this application is a private tutor, he or she will need to add the <a href="#tutee">tutees'</a> contact details.
+Since a tutee contains more details specific to them compared to a person, tutee contacts should not be mixed with the <a href="#person">person</a> contacts so that all the contacts are organized and can be managed easily.
+Therefore, AddTuteeCommand is used to add only the <a href="#tutee-details">tutees' details</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -638,7 +636,7 @@ This allows AddTuteeCommand to use or override the state saving codes inside the
 </div>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the addtutee operation works:</p>
+<p>The following <span class="underline"><strong>sequence diagram</strong></span> shows how the addtutee operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -647,16 +645,16 @@ This allows AddTuteeCommand to use or override the state saving codes inside the
 </div>
 <div class="paragraph">
 <p>As shown in the sequence diagram, after Tutee object has been created, it is being passed to Model. Model manager will add the Tutee object to the person list in TuitionConnect.
-By having a combined list of tutee and non-tutee, we can manage the contacts using one command, such as delete command, instead of having 1 command for tutee and 1 command for non-tutee.
+By having a combined list of tutee and person, we can manage the contacts using one command, such as delete command, instead of having 1 command for tutee and 1 command for person.
 The combined list is achieved through the use of inheritance, whereby Tutee class inherits the Person class as shown in the diagram below.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/TuteeClassDiagram.jpg" alt="TuteeClassDiagram" width="800"></span></p>
+<p><span class="image"><img src="images/TuteeClassDiagram.jpg" alt="TuteeClassDiagram" width="600" height="400"></span></p>
 </div>
 <div class="paragraph">
 <p>Since a tutee is a person, we can carried out inheritance by extending the Person class.
 Both Tutee and Person class objects have the same fields such as Name, Phone, Email and Address.
-However, Tutee class object has additional fields such as Subject, Grade, EducationLevel and School, which are irrelevant to a Person class object (non-tutee).</p>
+However, Tutee class object has additional details such as Subject, Grade, EducationLevel and School, which are irrelevant to a Person class object.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -665,10 +663,16 @@ However, Tutee class object has additional fields such as Subject, Grade, Educat
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the person already exists, either as tutee or non-tutee, in the contact list, DuplicatePersonException will be thrown.
+If the person already exists, either as tutee or person, in the contact list, DuplicatePersonException will be thrown.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>The following <span class="underline"><strong>activity diagram</strong></span> shows the workflow when adding a tutee.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/AddTuteeActivityDiagram.png" alt="AddTuteeActivityDiagram" width=""800"></span></p>
 </div>
 </div>
 </div>
@@ -681,10 +685,10 @@ If the person already exists, either as tutee or non-tutee, in the contact list,
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Non-tutee will not have any detail that is specific to tutee only. This saves memory especially when there are numerous non-tutee objects.</p>
+<p>Pros: Person will not have any detail that is specific to tutee only. This saves memory especially when there are numerous person objects.</p>
 </li>
 <li>
-<p>Cons: A tutee cannot simply convert into a non-tutee when tutor stops teaching him/her. Tutor has to delete the tutee and add him/her again as a non-tutee.</p>
+<p>Cons: A tutee cannot simply convert into a person object when tutor stops teaching him/her. Tutor has to delete the tutee and add him/her again as a person.</p>
 </li>
 </ul>
 </div>
@@ -697,7 +701,7 @@ If the person already exists, either as tutee or non-tutee, in the contact list,
 <p>Pros: Features can be implemented easily without modifying much to the existing code.</p>
 </li>
 <li>
-<p>Cons: Non-tutee object creates unrelated field objects such as "subject" and "school" and these objects will waste the memory space. This problem will be significant when there are a lot of non-tutee objects.</p>
+<p>Cons: Person object creates unrelated field objects such as "subject" and "school" and these objects will waste the memory space. This problem will be significant when there are a lot of person objects.</p>
 </li>
 </ul>
 </div>
@@ -1001,16 +1005,14 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="sect2">
 <h3 id="sort-person-command"><a class="link" href="#sort-person-command">3.3. Sort Person Command</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
-<div class="sect4">
-<h5 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">Reason for Implementation</a></h5>
+<h4 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">3.3.1. Reason for Implementation</a></h4>
 <div class="paragraph">
 <p>As the amount of contacts stored grows, it would be harder to browse the address book. Hence, Sort Person Command is created
 to ease users&#8217;s experience in organizing their address book.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="how-it-is-implemented-2"><a class="link" href="#how-it-is-implemented-2">How it is implemented</a></h5>
+<div class="sect3">
+<h4 id="how-it-is-implemented-2"><a class="link" href="#how-it-is-implemented-2">3.3.2. How it is implemented</a></h4>
 <div class="paragraph">
 <p>The following sequence diagram shows the general idea of how sort person command works:</p>
 </div>
@@ -1020,30 +1022,67 @@ to ease users&#8217;s experience in organizing their address book.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>As shown in the sequence diagram, the Logic command&#8217;s call for execution leads to Sort Person command to request for a Comparator object from PersonSortUtil class.
+<p>As shown in the sequence diagram, the Logic command&#8217;s call for execution results in Sort Person command to request for a Comparator object from PersonSortUtil class.
 A comparator object is required since the sorting implementation utilizes JavaFX8&#8217;s SortedList class.
-(Refer to <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/SortedList.html*" class="bare">https://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/SortedList.html*</a> for more information)
+(Refer to <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/SortedList.html" class="bare">https://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/SortedList.html</a> for more information)
 Here, PersonSortUtil class is responsible in providing a suitable comparator that matches the sorting behaviour requested by the user. Upon receiving the comparator, SortPersonCommand
-calls the sortFilteredPersonList() method in method which utilises a SortedList object to perform the sorting.</p>
-</div>
+calls the sortFilteredPersonList() method which utilises a SortedList object to perform the sorting.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
+<h3 id="natural-language-identifier"><a class="link" href="#natural-language-identifier">3.4. Natural Language Identifier</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">3.4.1. Reason for Implementation</a></h4>
+<div class="paragraph">
+<p>Figuring out the exact date for a tuition appointment can be tedious in some extent. Tutors would need to flip over a calendar, or to perform some
+operations in the context of this app. Based on this concern, as our goal is to simplify the life of tutor,
+we feel the importance of introducing a feature where tutors are able to set a tuition appointment not only by date,
+but also by using common terms such as: <code>today</code>, <code>next month</code>, etc.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-limitation"><a class="link" href="#current-implementation-limitation">3.4.2. Current Implementation Limitation</a></h4>
+<div class="paragraph">
+<p>In the current implementation, common terms (or Natural Languages) are only identifiable by the <code>Find Task</code> command parser.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="how-it-is-implemented-3"><a class="link" href="#how-it-is-implemented-3">3.4.3. How it is implemented</a></h4>
+<div class="paragraph">
+<p>A class named NaturalLanguageIdentifier applys the singleton design pattern as the class stores a private attribute that records the current time of the system clock.
+As this reference time must be the same throughout the entire execution of a command, this class should only be instantiated once.</p>
+</div>
+<div class="paragraph">
+<p>This class is responsible for identifying whether a given user input is a recognizable natural language and convert it
+into the desired format when applicable. In achieving this purpose, the public methods within this class are called by
+the command parsers that inherit Address Book parser. In general, these public methods have a certain characteristic.
+These methods always take in a user&#8217;s input as parameter and either return the same input if it is not recognized as a valid natural language
+or return a processable form of the natural language. For example, given <strong>this month</strong> (a valid natural language) as user input,
+the getMonthAsString() method will return <strong>April</strong> (the current month).</p>
+</div>
+<div class="paragraph">
+<p>Valid or recognized natural languages are determined by a static list inside the NaturalLanguageIdentifier class.
+This list of Strings stores common terms used by tutors. If a given user input matches one of the terms in the list, that input
+is treated as a valid natural language.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1074,7 +1113,7 @@ calls the sortFilteredPersonList() method in method which utilises a SortedList 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2091,9 +2130,20 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major Enhancement</strong>: Integrated a calendar into TuitionConnect using third party software, CalendarFX.
-Configured TuitionConnect&#8217;s main window to display day, week, month or year view of the calendar. A daily agenda list is showed together with the calendar&#8217;s day view.
-In addition, the calendar reflects any changes to the schedule such as adding of a new task or deleting an existing task.</p>
+<p><strong>Major Enhancement</strong>: Integrated a calendar into TuitionConnect using third party software, CalendarFX.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Revamp UI layout and colour so as to incorporate calendar to the UI</p>
+</li>
+<li>
+<p>Implemented change command to display day, week, month or year view of the calendar. A daily agenda list is showed together with the calendar&#8217;s day view.</p>
+</li>
+<li>
+<p>In addition, the calendar reflects any changes to the schedule such as adding of a new task, deleting an existing task or undo.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
 <p><strong>Minor Enhancement</strong>:</p>
@@ -2106,7 +2156,7 @@ In addition, the calendar reflects any changes to the schedule such as adding of
 <p>Implemented tutee, tuition, personal task classes and relevant field classes to support all the commands.</p>
 </li>
 <li>
-<p>Modify select command to conduct name search on google search pop up page.</p>
+<p>Modify edit command to be able to edit tutee&#8217;s details.</p>
 </li>
 </ol>
 </div>
@@ -2694,7 +2744,7 @@ Use case ends.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>*a1 TC requests confirmation of the cancelation.</p>
+<p>*a1 TC requests confirmation of the cancellation.</p>
 </li>
 <li>
 <p>*a2. User confirms the cancellation.</p>
@@ -2858,9 +2908,37 @@ Use case ends.</p>
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
+<dt class="hdlist1"><a id="person"></a> Person</dt>
+<dd>
+<p>A non tutee contact</p>
+</dd>
+<dt class="hdlist1"><a id="personal-task"></a> Personal Task</dt>
+<dd>
+<p>Non-tuition activity</p>
+</dd>
 <dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
 <dd>
 <p>A contact detail that is not meant to be shared with others</p>
+</dd>
+<dt class="hdlist1"><a id="task"></a> Task</dt>
+<dd>
+<p>This refers to the activities you want to add into your 'to-do-list'</p>
+</dd>
+<dt class="hdlist1"><a id="tuition-task"></a> Tuition Task</dt>
+<dd>
+<p>Teaching a specified tutee in contact list.</p>
+</dd>
+<dt class="hdlist1"><a id="tutee"></a> Tutee</dt>
+<dd>
+<p>A student whom you are giving tuition to</p>
+</dd>
+<dt class="hdlist1"><a id="tutee-details"></a> Tutee Details</dt>
+<dd>
+<p>These are details that are owned only by tutees, which include tutee&#8217;s education level, grade, subject and school</p>
+</dd>
+<dt class="hdlist1"><a id="task-list"></a> Task List / Schedule</dt>
+<dd>
+<p>These terms are used interchangeably to refer to the list of tasks located in the middle of the app.</p>
 </dd>
 </dl>
 </div>
@@ -3016,7 +3094,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:30:48 UTC
+Last updated 2018-04-15 11:10:57 UTC
 </div>
 </div>
 </body>
