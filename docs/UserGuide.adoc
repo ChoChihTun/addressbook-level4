@@ -328,7 +328,7 @@ for more information about Tutee.
 ** Duration must be written in the format of XXhXXm
 *** valid example : 1h30m
 **** this means that the tuition lasts for 1 *hour* and 30 *minute*.
-*** invalid example : 1h30m
+*** invalid example : 01h30m
 **** the duration in hour cannot have leading zero
 *** invalid example : 1h60m
 **** the duration in minute must be a number between 0 and 59.
